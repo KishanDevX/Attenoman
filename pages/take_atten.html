@@ -3,7 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>attenoman</title>
+    <link rel="stylesheet" href="../global.css" />
+    <style>
+      #roll_display {
+        color: orange;
+      }
+
+      #options {
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      #present {
+        background-color: greenyellow;
+        color: black;
+      }
+
+      #absent {
+        background-color: red;
+      }
+
+      #name_display {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        height: 30%;
+        width: 100%;
+      }
+
+      #name {
+        text-transform: capitalize;
+        margin: 1rem 0 1rem 0;
+        font-size: 15vmin;
+        padding: 0 1rem;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <p id="roll_display">roll no: <span id="roll_num"></span></p>
+    <div id="name_display">
+      <h1 id="name"></h1>
+    </div>
+    <div id="options">
+      <button id="absent">absent</button>
+      <button id="present">present</button>
+    </div>
+    <script type="module" src="../javascripts/take_atten.js"></script>
+  </body>
 </html>

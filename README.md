@@ -26,7 +26,7 @@ A lightweight, no-login tool designed to **automate attendance-taking** by elimi
 ### 🔹 Instant Output
 
 Live app: _[Click here to access Attenomata](#)_ #NOT HOSTED YET!!!
-_(link of wher i hosted)_
+_(link of where i hosted)_
 
 ---
 
