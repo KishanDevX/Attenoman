@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>attenoman</title>
     <link rel="stylesheet" href="../global.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
     <style>
       #roll_display {
         color: orange;
+        font-size: 10vmin;
+        padding: 1rem;
+        text-decoration: underline;
       }
 
       #options {
@@ -41,17 +48,79 @@
         font-size: 15vmin;
         padding: 0 1rem;
       }
+
+      #cancel_btn {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.708);
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 1.5rem;
+      }
+
+      #done-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      #copy-btn {
+        all: unset;
+        color: rgba(255, 255, 255, 0.471);
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2rem;
+      }
+
+      #send-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background-color: #25d366; /* WhatsApp green */
+        color: white;
+        padding: 0.8rem 1.2rem;
+        text-decoration: none;
+        border-radius: 0.6rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 1rem 0;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      #send-btn img {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+
+      #send-btn:hover {
+        background-color: #128c7e; /* darker WhatsApp green */
+        transform: translateY(-2px);
+      }
     </style>
   </head>
   <body>
-    <a href="../index.html">cancel</a>
-    <p id="roll_display">roll no: <span id="roll_num"></span></p>
+    <a id="cancel_btn" href="../index.html">
+      <span class="material-symbols-outlined"> cancel </span>
+      <span>Cancel</span>
+    </a>
+    <p id="roll_display">
+      <span class="material-symbols-outlined"> shoppingmode </span> roll no:
+      <span id="roll_num"></span>
+    </p>
     <div id="name_display">
       <h1 id="name"></h1>
     </div>
     <div id="options">
-      <button id="absent">absent</button>
-      <button id="present">present</button>
+      <button id="absent">Absent</button>
+      <button id="present">Present</button>
     </div>
     <script type="module" src="../javascripts/take_atten.js"></script>
   </body>

@@ -5,17 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>attenoman</title>
     <link rel="stylesheet" href="global.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <style>
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        font-size: 1rem;
+        margin: 2rem 0;
+        width: 60%;
+      }
+
+      a {
+        color: greenyellow;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        background-color: blue;
+        padding: 10px 1rem;
+        border-radius: 1rem;
+        display: flex;
+        gap: 5px;
+      }
+
+      h1 {
+        width: 80%;
+        text-align: start;
+      }
+
+      p {
+        padding: 0 2rem;
+        text-align: start;
+        width: 80%;
+        color: rgba(196, 196, 196, 0.527);
+      }
+    </style>
   </head>
   <body>
-    <h1>welcome to attenoman</h1>
+    <h1>Attenoman</h1>
     <p>
-      designed by <br />
-      <a href="https://kishan-site.vercel.app">Kishan Kumar</a>
+      <span>
+        designed by:
+        <a href="https://kishan-site.vercel.app">Kishan Kumar</a>
+      </span>
+      <br />
       <span>click to know more about me!</span>
     </p>
     <nav>
-      <a href="./pages/take_atten.html">take attendance</a>
-      <a href="./pages/edit_stud.html">edit students</a>
+      <a href="./pages/take_atten.html">
+        <span class="material-symbols-outlined"> school </span>
+        <span> Take attendance</span>
+      </a>
+      <a href="./pages/edit_stud.html">
+        <span class="material-symbols-outlined"> edit_note </span>
+        <span>Edit students</span>
+      </a>
     </nav>
   </body>
 </html>

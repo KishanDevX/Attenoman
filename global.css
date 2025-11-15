@@ -4,20 +4,15 @@
 }
 
 body {
+  font-family: sans-serif;
   background-color: black;
   color: white;
   height: 100dvh;
   display: flex;
-  font-family: sans-serif;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-}
-
-p {
-  font-size: 10vmin;
-  padding: 1rem;
 }
 
 button {

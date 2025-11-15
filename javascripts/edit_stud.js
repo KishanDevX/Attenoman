@@ -1,15 +1,18 @@
 // default students array
 import { students as default_students } from "../data/students.js";
 
-if (!localStorage.getItem("students")) {
-  localStorage.setItem("students", JSON.stringify(default_students));
-}
-
 // Load existing students from localStorage or start with empty array
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
 const studentList = document.getElementById("student-list");
 const newStudentInput = document.getElementById("new-student");
+
+if (!localStorage.getItem("students")) {
+  alert("No students found! Loading default student list.");
+  students = default_students;
+  localStorage.setItem("students", JSON.stringify(students));
+  renderStudents();
+}
 
 function renderStudents() {
   studentList.innerHTML = ""; // Clear current list in UI

@@ -5,8 +5,8 @@ const ordered_students = students.sort();
 if (ordered_students.length === 0) {
   document.body.innerHTML = `
     <div id="no-students-screen">
-      <h1>No students found!</h1>
-      <p>Please add students first in the <br> <a href="../pages/edit_stud.html">Edit Students</a> section.</p>
+      <h1 style="text-decoration: underline; color: red;">No students found!</h1>
+      <p style="text-align: start; margin-top: 10px">Please add students first in the <br> <a href="../pages/edit_stud.html">Edit Students</a> section.</p>
     </div>
   `;
   throw new Error("No students available for attendance.");
@@ -25,14 +25,17 @@ function next_student() {
 }
 
 function isDone_check() {
-  if (idx == ordered_students.length) {
-    console.log("pres: ", present_list);
-    console.log("abs: ", absent_list);
+  if (idx == ordered_students.length + 1) {
     document.body.innerHTML = `
       <div id="done-screen">
         <h1>Attendance Taken Successfully!</h1>
-        <button id="copy-btn">copy text record</button>
-        <a id="send-btn">send it now!</a>
+        <a id="send-btn">
+          <span>send it now!</span>
+        </a>
+        <button id="copy-btn">
+          <span class="material-symbols-outlined">content_copy</span>
+          <span>copy text record</span>
+        </button>
       </div>
     `;
 
@@ -42,7 +45,7 @@ function isDone_check() {
       record += ` • ${name}\n`;
     });
 
-    record += `*Total students:* ${ordered_students.length}\n*Present:* ${present_list.length}\n*Absent:* ${absent_list.length}\n`;
+    record += `\n*Total students:* ${ordered_students.length}\n*Present:* ${present_list.length}\n*Absent:* ${absent_list.length}\n`;
 
     // send via whatsapp
     const send_btn = document.getElementById("send-btn");
@@ -86,13 +89,22 @@ const roll_num = document.getElementById("roll_num");
 const present = document.getElementById("present");
 const absent = document.getElementById("absent");
 
+// click sounds
+const present_sound = new Audio("../media/audio/present.mp3");
+const absent_sound = new Audio("../media/audio/absent.mp3");
+
+// button event listeners
 present.addEventListener("click", () => {
+  present_sound.currentTime = 0;
+  present_sound.play();
   present_list.push(name_elem.innerText);
   next_student();
   isDone_check();
 });
 
 absent.addEventListener("click", () => {
+  absent_sound.currentTime = 0;
+  absent_sound.play();
   absent_list.push(name_elem.innerText);
   next_student();
   isDone_check();
