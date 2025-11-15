@@ -1,46 +1,16 @@
-export const students = [
-  "Aadesh Srivastava",
-  "Anik Jafar",
-  "Aadarsh Modanwal",
-  "Ali Hamid",
-  "Amandeep Yadav",
-  "Anishka Pal",
-  "Arpit Tripathi",
-  "Arya Singh",
-  "Aayush Kesarvani",
-  "Bhanu Pratap",
-  "Iqra Khan",
-  "Faizan Khan",
-  "Fiza Anis",
-  "Harsh Gupta",
-  "Hrithik Singh",
-  "Indresh Singh",
-  "Insha",
-  "Naman Soni",
-  "Om Prakash Sahu",
-  "Pooja Kumari",
-  "Pushparaj",
-  "Ramkrishna Pandey",
-  "Rishant Singh",
-  "Rishu Dubey",
-  "Satyansh Shrivastav",
-  "Sayon Manna",
-  "Shivam Singh",
-  "Shivam Yadav",
-  "Shreeji Kesarvani",
-  "Shreya Gupta",
-  "Shyama Kasera",
-  "Smriti Prajapati",
-  "Soniya Mandal",
-  "Tannu Gupta",
-  "Tanushree Yadav",
-  "Utkarsh Dubey",
-  "Vaidehi Singh",
-  "Vishwas Pandey",
-  "Zoya Khan",
-];
-
+// load students from localStorage
+const students = JSON.parse(localStorage.getItem("students")) || [];
 const ordered_students = students.sort();
+
+if (ordered_students.length === 0) {
+  document.body.innerHTML = `
+    <div id="no-students-screen">
+      <h1>No students found!</h1>
+      <p>Please add students first in the <br> <a href="../pages/edit_stud.html">Edit Students</a> section.</p>
+    </div>
+  `;
+  throw new Error("No students available for attendance.");
+}
 
 // initialize
 let present_list = [];
@@ -67,20 +37,22 @@ function isDone_check() {
     `;
 
     let record = `Name of all *PRESENT students* \non *${get_date()}*:\n\n`;
-    present_list.forEach((name, index) => {
+
+    present_list.forEach((name) => {
       record += ` • ${name}\n`;
     });
 
-    record += `\n*Total students: ${ordered_students.length}*\n`;
-    record += `*Present:* ${present_list.length}\n`;
-    record += `*Absent:* ${absent_list.length}\n\n`;
+    record += `*Total students:* ${ordered_students.length}\n*Present:* ${present_list.length}\n*Absent:* ${absent_list.length}\n`;
 
+    // send via whatsapp
     const send_btn = document.getElementById("send-btn");
-    const whatsapp_url = `https://wa.me/?text=${encodeURIComponent(record)}`;
-    send_btn.setAttribute("href", whatsapp_url);
-    send_btn.setAttribute("target", "_blank");
-    send_btn.innerText = "Send it via WhatsApp";
+    Object.assign(send_btn, {
+      href: `https://wa.me/?text=${encodeURIComponent(record)}`,
+      target: "_blank",
+      textContent: "Send it via WhatsApp",
+    });
 
+    // copy to clipboard
     const copy_btn = document.getElementById("copy-btn");
     copy_btn.addEventListener("click", () => {
       navigator.clipboard.writeText(record).then(
